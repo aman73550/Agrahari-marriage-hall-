@@ -24,6 +24,7 @@ function Navbar() {
   const navLinks = [
     { label: "About", id: "about" },
     { label: "Experience", id: "experience" },
+    { label: "Gallery", id: "gallery" },
     { label: "Reviews", id: "reviews" },
     { label: "Visit Us", id: "location" },
   ];
@@ -430,6 +431,124 @@ function ExperienceSection() {
           ))}
         </div>
       </div>
+    </section>
+  );
+}
+
+const galleryImages = [
+  { src: "/images/gallery-h1.jpeg", alt: "Agrahari Marriage Hall Interior", span: "col-span-2 row-span-2" },
+  { src: "/images/gallery-h3.jpeg", alt: "Grand Celebration Setup", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery-h2.jpeg", alt: "Royal Dining Experience", span: "col-span-1 row-span-2" },
+  { src: "/images/gallery-h4.jpeg", alt: "Elegant Decor", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery-h5.jpeg", alt: "Premium Venue", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery-h6.jpeg", alt: "Luxury Banquet Hall", span: "col-span-2 row-span-1" },
+  { src: "/images/gallery-h7.jpeg", alt: "Fine Dining Setup", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery-h8.jpeg", alt: "Shopping Centre", span: "col-span-1 row-span-2" },
+  { src: "/images/gallery-h9.jpeg", alt: "Exterior View", span: "col-span-1 row-span-1" },
+];
+
+function GalleryLightbox({ image, onClose }: { image: typeof galleryImages[0] | null; onClose: () => void }) {
+  if (!image) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8"
+      onClick={onClose}
+      data-testid="lightbox-overlay"
+    >
+      <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" />
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="relative max-w-5xl max-h-[85vh] w-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="w-full h-full max-h-[85vh] object-contain rounded-2xl"
+          data-testid="lightbox-image"
+        />
+        <p className="text-center text-white/60 text-sm tracking-wider mt-4">{image.alt}</p>
+        <button
+          onClick={onClose}
+          className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-black/80 border border-gold/30 flex items-center justify-center text-white/70 hover:text-gold hover:border-gold transition-all duration-300"
+          data-testid="button-lightbox-close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function GallerySection() {
+  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
+
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [selectedImage]);
+
+  return (
+    <section id="gallery" className="relative py-32 sm:py-40 lg:py-48" data-testid="section-gallery">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0e0e0e] to-[#0a0a0a]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(212,175,55,0.03),transparent_70%)]" />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+        <AnimatedSection className="text-center mb-16 lg:mb-24">
+          <SectionLabel label="Visual Journey" />
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-[0.04em] leading-[1.2]">
+            <span className="bg-gradient-to-r from-[#D4AF37] via-[#F5E0A3] to-[#D4AF37] bg-clip-text text-transparent">
+              The Royal Gallery
+            </span>
+          </h2>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] sm:auto-rows-[220px] lg:auto-rows-[240px] gap-3 sm:gap-4">
+          {galleryImages.map((image, index) => (
+            <AnimatedSection key={image.src} delay={index * 0.08}>
+              <motion.div
+                className={`relative group rounded-2xl overflow-hidden cursor-pointer border border-white/10 h-full ${image.span}`}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
+                onClick={() => setSelectedImage(image)}
+                data-testid={`gallery-image-${index}`}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 border border-gold/0 group-hover:border-gold/20 rounded-2xl transition-all duration-500" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="text-xs tracking-[0.25em] uppercase text-gold bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gold/20">
+                    View Details
+                  </span>
+                </div>
+              </motion.div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <GalleryLightbox image={selectedImage} onClose={() => setSelectedImage(null)} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -945,6 +1064,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ExperienceSection />
+      <GallerySection />
       <ReviewsSection />
       <LocationSection />
       <Footer />
