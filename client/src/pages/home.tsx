@@ -1046,6 +1046,114 @@ function FloatingDock() {
   );
 }
 
+function PaymentPendingModal() {
+  const [open, setOpen] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(48 * 60 * 60);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("paymentModalDismissed");
+    if (stored) setOpen(false);
+
+    const startKey = "paymentTimerStart";
+    const savedStart = localStorage.getItem(startKey);
+    const start = savedStart ? parseInt(savedStart, 10) : Date.now();
+    if (!savedStart) localStorage.setItem(startKey, start.toString());
+
+    const interval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - start) / 1000);
+      const remaining = Math.max(48 * 60 * 60 - elapsed, 0);
+      setTimeLeft(remaining);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+    localStorage.setItem("paymentModalDismissed", "true");
+  };
+
+  const hours = Math.floor(timeLeft / 3600);
+  const minutes = Math.floor((timeLeft % 3600) / 60);
+  const seconds = timeLeft % 60;
+  const pad = (n: number) => n.toString().padStart(2, "0");
+
+  if (!open) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+        data-testid="modal-payment-pending"
+      >
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={handleClose} />
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="relative w-full max-w-md rounded-3xl bg-[#111]/90 backdrop-blur-2xl border border-gold/30 shadow-[0_0_60px_rgba(212,175,55,0.15),0_20px_60px_rgba(0,0,0,0.6)] p-8 sm:p-10 text-center"
+        >
+          <button
+            onClick={handleClose}
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-gold hover:border-gold/40 transition-all duration-300"
+            data-testid="button-modal-close"
+          >
+            <X className="w-4 h-4" />
+          </button>
+
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border border-gold/20 flex items-center justify-center mx-auto mb-6">
+            <Clock className="w-7 h-7 text-gold" />
+          </div>
+
+          <h3 className="font-serif text-xl sm:text-2xl text-gold tracking-[0.06em] mb-3">
+            Website Ownership Pending
+          </h3>
+
+          <p className="text-white/50 text-sm tracking-wide leading-relaxed mb-6">
+            This website will be deactivated in
+          </p>
+
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="flex flex-col items-center px-4 py-3 rounded-2xl bg-white/[0.03] border border-gold/10">
+              <span className="font-serif text-3xl text-gold">{pad(hours)}</span>
+              <span className="text-[9px] tracking-[0.2em] uppercase text-white/30 mt-1">Hours</span>
+            </div>
+            <span className="text-gold/50 text-2xl font-light">:</span>
+            <div className="flex flex-col items-center px-4 py-3 rounded-2xl bg-white/[0.03] border border-gold/10">
+              <span className="font-serif text-3xl text-gold">{pad(minutes)}</span>
+              <span className="text-[9px] tracking-[0.2em] uppercase text-white/30 mt-1">Minutes</span>
+            </div>
+            <span className="text-gold/50 text-2xl font-light">:</span>
+            <div className="flex flex-col items-center px-4 py-3 rounded-2xl bg-white/[0.03] border border-gold/10">
+              <span className="font-serif text-3xl text-gold">{pad(seconds)}</span>
+              <span className="text-[9px] tracking-[0.2em] uppercase text-white/30 mt-1">Seconds</span>
+            </div>
+          </div>
+
+          <a
+            href="https://www.instagram.com/amangupta.yt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-gold to-gold-dark text-charcoal font-semibold text-sm tracking-[0.15em] uppercase transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:scale-105 border border-white/20"
+            data-testid="button-contact-developer"
+          >
+            <Instagram className="w-4 h-4" />
+            Contact Developer
+          </a>
+
+          <p className="text-white/20 text-[10px] tracking-wider mt-5">
+            @amangupta.yt
+          </p>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
 
@@ -1070,6 +1178,7 @@ export default function Home() {
       <LocationSection />
       <Footer />
       <FloatingDock />
+      <PaymentPendingModal />
     </motion.div>
   );
 }
