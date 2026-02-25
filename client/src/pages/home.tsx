@@ -43,9 +43,7 @@ function Navbar() {
             data-testid="link-logo"
           >
             <Sparkles className="w-6 h-6 text-gold" />
-            <span className="font-serif text-xl tracking-[0.15em] text-gold">
-              AGRAHARI
-            </span>
+            <span className="font-serif text-xl tracking-[0.15em] text-gold">AGRAHARI MARRIAGE HALL</span>
           </button>
 
           <div className="hidden md:flex items-center gap-10">
@@ -82,7 +80,6 @@ function Navbar() {
           </button>
         </div>
       </div>
-
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
