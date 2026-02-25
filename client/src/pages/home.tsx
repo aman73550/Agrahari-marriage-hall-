@@ -267,7 +267,6 @@ function AboutSection() {
     <section id="about" className="relative py-32 sm:py-40 lg:py-48" data-testid="section-about">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.03),transparent_70%)]" />
-
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <AnimatedSection>
@@ -298,7 +297,7 @@ function AboutSection() {
               </div>
               <div className="w-px h-12 bg-gold/20" />
               <div className="text-center">
-                <span className="block font-serif text-3xl text-gold">500+</span>
+                <span className="block font-serif text-3xl text-gold">50000+</span>
                 <span className="text-xs tracking-[0.2em] uppercase text-white/40 mt-1 block">Happy Guests</span>
               </div>
               <div className="w-px h-12 bg-gold/20" />
