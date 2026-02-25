@@ -38,13 +38,17 @@ function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between gap-4 h-20">
+        <div className="flex items-center justify-between gap-4 h-20 md:h-24">
           <button
             onClick={() => scrollTo("hero")}
             className="flex items-center gap-3"
             data-testid="link-logo"
           >
-            <Sparkles className="w-6 h-6 text-gold flex-shrink-0" />
+            <img
+              src="/images/logo.jpeg"
+              alt="Agrahari Marriage Hall Logo"
+              className="h-12 md:h-16 w-12 md:w-16 rounded-full object-cover border-2 border-[#D4AF37]/50 shadow-[0_0_15px_rgba(212,175,55,0.3)] flex-shrink-0"
+            />
             <span className="font-serif tracking-[0.1em] lg:tracking-[0.15em] text-gold leading-tight whitespace-nowrap">
               <span className="text-sm sm:text-base md:hidden">AGRAHARI MARRIAGE HALL</span>
               <span className="hidden md:inline text-[11px] lg:text-sm xl:text-base">AGRAHARI MARRIAGE HALL,{" "}
