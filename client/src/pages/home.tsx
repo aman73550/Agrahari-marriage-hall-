@@ -45,20 +45,20 @@ function Navbar() {
             data-testid="link-logo"
           >
             <Sparkles className="w-6 h-6 text-gold flex-shrink-0" />
-            <span className="font-serif tracking-[0.15em] text-gold leading-tight whitespace-nowrap">
-              <span className="text-base sm:text-lg md:hidden">AGRAHARI MARRIAGE HALL</span>
-              <span className="hidden md:inline text-base">AGRAHARI MARRIAGE HALL,{" "}
+            <span className="font-serif tracking-[0.1em] lg:tracking-[0.15em] text-gold leading-tight whitespace-nowrap">
+              <span className="text-sm sm:text-base md:hidden">AGRAHARI MARRIAGE HALL</span>
+              <span className="hidden md:inline text-[11px] lg:text-sm xl:text-base">AGRAHARI MARRIAGE HALL,{" "}
                 <span className="text-gold/75">RESTAURANT & SHOPPING CENTRE</span>
               </span>
             </span>
           </button>
 
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8 xl:gap-10">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
-                className="text-sm tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-gold whitespace-nowrap"
+                className="text-xs lg:text-sm tracking-[0.15em] lg:tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-gold whitespace-nowrap"
                 data-testid={`link-nav-${link.id}`}
               >
                 {link.label}
@@ -68,7 +68,7 @@ function Navbar() {
               href={GOOGLE_MAPS_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm tracking-[0.15em] uppercase px-7 py-2.5 rounded-full bg-gradient-to-r from-gold to-gold-dark text-charcoal font-semibold transition-all duration-500 hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:scale-105 border border-white/10 backdrop-blur-sm whitespace-nowrap"
+              className="text-xs lg:text-sm tracking-[0.12em] lg:tracking-[0.15em] uppercase px-4 lg:px-6 xl:px-7 py-2 lg:py-2.5 rounded-full bg-gradient-to-r from-gold to-gold-dark text-charcoal font-semibold transition-all duration-500 hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:scale-105 border border-white/10 backdrop-blur-sm whitespace-nowrap"
               data-testid="button-get-directions-nav"
             >
               Get Directions
