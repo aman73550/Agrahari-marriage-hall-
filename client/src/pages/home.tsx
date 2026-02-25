@@ -50,10 +50,11 @@ function Navbar() {
               alt="Agrahari Marriage Hall Logo"
               className="h-12 md:h-16 w-12 md:w-16 rounded-full object-cover border-2 border-[#D4AF37]/50 shadow-[0_0_15px_rgba(212,175,55,0.3)] flex-shrink-0"
             />
-            <span className="font-serif tracking-[0.1em] lg:tracking-[0.15em] text-gold leading-tight whitespace-nowrap">
-              <span className="text-sm sm:text-base md:hidden">AGRAHARI MARRIAGE HALL</span>
-              <span className="hidden md:inline text-[11px] lg:text-sm xl:text-base">AGRAHARI MARRIAGE HALL,{" "}
-                <span className="text-gold/75">RESTAURANT & SHOPPING CENTRE</span>
+            <span className="font-serif tracking-[0.1em] lg:tracking-[0.12em] text-gold leading-tight">
+              <span className="text-sm sm:text-base md:hidden whitespace-nowrap">AGRAHARI MARRIAGE HALL</span>
+              <span className="hidden md:flex flex-col">
+                <span className="text-xs lg:text-sm whitespace-nowrap">AGRAHARI MARRIAGE HALL</span>
+                <span className="text-[10px] lg:text-xs text-gold/60 tracking-[0.08em] whitespace-nowrap">RESTAURANT & SHOPPING CENTRE</span>
               </span>
             </span>
           </button>
