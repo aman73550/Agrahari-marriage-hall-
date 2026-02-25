@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform, useInView, AnimatePresence } from "fra
 import { Star, MapPin, Phone, Clock, ChevronLeft, ChevronRight, Menu, X, Utensils, Crown, ShoppingBag, ArrowRight, Sparkles, Compass, Navigation, ExternalLink, Quote } from "lucide-react";
 
 const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/fvJKZ1YgDREkeJm38";
+const PHONE_NUMBER = "08009188327";
+const WHATSAPP_LINK = `https://wa.me/918009188327`;
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -254,7 +256,7 @@ function SectionLabel({ label }: { label: string }) {
 
 function GlassCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`relative rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-gold/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] ${className}`}>
+    <div className={`relative rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-gold/10 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_0_1px_rgba(212,175,55,0.04),0_4px_24px_rgba(212,175,55,0.06)] ${className}`}>
       {children}
     </div>
   );
@@ -398,7 +400,7 @@ function ExperienceSection() {
                 </div>
 
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white tracking-[0.04em] leading-[1.2] mb-6">
+                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl tracking-[0.04em] leading-[1.2] mb-6 bg-gradient-to-r from-[#D4AF37] to-[#F5E0A3] bg-clip-text text-transparent">
                     {exp.title}
                   </h3>
                   <p className="text-white/60 leading-[1.8] text-base tracking-wide font-light mb-8">
@@ -738,9 +740,13 @@ function LocationSection() {
                     <span className="text-xs tracking-[0.2em] uppercase text-gold/50 block mb-1">
                       Executive Desk
                     </span>
-                    <p className="text-white/70 text-sm" data-testid="text-phone">
-                      Contact us for reservations
-                    </p>
+                    <a
+                      href={`tel:${PHONE_NUMBER}`}
+                      className="text-white/70 text-sm hover:text-gold transition-colors duration-300"
+                      data-testid="text-phone"
+                    >
+                      {PHONE_NUMBER}
+                    </a>
                   </div>
                 </div>
 
@@ -758,6 +764,15 @@ function LocationSection() {
                   </div>
                 </div>
               </div>
+
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 w-full rounded-full bg-white/5 backdrop-blur-md border border-gold/40 text-white font-semibold tracking-[0.1em] text-sm transition-all duration-500 hover:bg-gold hover:text-charcoal hover:border-gold hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:scale-[1.02]"
+                data-testid="button-call-concierge"
+              >
+                <Phone className="w-4 h-4 text-gold group-hover:text-charcoal transition-colors duration-500" />
+                <span>Speak with our Concierge</span>
+              </a>
 
               <a
                 href={GOOGLE_MAPS_LINK}
@@ -817,7 +832,7 @@ function Footer() {
   );
 }
 
-function MobileStickyBar() {
+function FloatingDock() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -830,22 +845,49 @@ function MobileStickyBar() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-black/60 backdrop-blur-2xl border-t border-gold/15 p-4"
+          exit={{ y: 80, opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden"
         >
-          <a
-            href={GOOGLE_MAPS_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-full bg-gradient-to-r from-gold to-gold-dark text-charcoal font-sans text-sm tracking-[0.2em] uppercase font-semibold shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-            data-testid="button-sticky-visit"
-          >
-            <MapPin className="w-4 h-4" />
-            Visit Agrahari Now
-          </a>
+          <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-black/70 backdrop-blur-2xl border border-gold/20 shadow-[0_8px_40px_rgba(0,0,0,0.6),0_0_0_1px_rgba(212,175,55,0.08)]">
+            <a
+              href={`tel:${PHONE_NUMBER}`}
+              data-testid="button-dock-call"
+              className="flex flex-col items-center gap-1 px-4 py-2 rounded-full bg-gold/10 border border-gold/30 transition-all duration-300 hover:bg-gold hover:border-gold group"
+              aria-label="Call us"
+            >
+              <Phone className="w-5 h-5 text-gold group-hover:text-charcoal transition-colors duration-300" />
+              <span className="text-[9px] tracking-widest uppercase text-gold/70 group-hover:text-charcoal transition-colors duration-300">Call</span>
+            </a>
+
+            <a
+              href={GOOGLE_MAPS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="button-dock-location"
+              className="flex flex-col items-center gap-1 px-4 py-2 rounded-full bg-gold/10 border border-gold/30 transition-all duration-300 hover:bg-gold hover:border-gold group"
+              aria-label="Get directions"
+            >
+              <MapPin className="w-5 h-5 text-gold group-hover:text-charcoal transition-colors duration-300" />
+              <span className="text-[9px] tracking-widest uppercase text-gold/70 group-hover:text-charcoal transition-colors duration-300">Location</span>
+            </a>
+
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="button-dock-whatsapp"
+              className="flex flex-col items-center gap-1 px-4 py-2 rounded-full bg-gold/10 border border-gold/30 transition-all duration-300 hover:bg-gold hover:border-gold group"
+              aria-label="Chat on WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-gold group-hover:fill-charcoal transition-colors duration-300" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              <span className="text-[9px] tracking-widest uppercase text-gold/70 group-hover:text-charcoal transition-colors duration-300">WhatsApp</span>
+            </a>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -874,7 +916,7 @@ export default function Home() {
       <ReviewsSection />
       <LocationSection />
       <Footer />
-      <MobileStickyBar />
+      <FloatingDock />
     </motion.div>
   );
 }
