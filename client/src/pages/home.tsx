@@ -678,11 +678,12 @@ function LocationSection() {
           <AnimatedSection>
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-charcoal-200">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.4!2d82.7!3d27.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDAwJzAwLjAiTiA4MsKwNDInMDAuMCJF!5e0!3m2!1sen!2sin!4v1700000000000"
-                className="w-full h-full border-0 grayscale contrast-125 opacity-60"
+                src="https://maps.google.com/maps?q=Agrahari+Marriage+Hall,+Dumariyaganj,+Siddharth+Nagar,+Uttar+Pradesh&output=embed&z=15"
+                className="w-full h-full border-0 grayscale contrast-110 opacity-90"
                 loading="lazy"
                 allowFullScreen
-                title="Agrahari Restaurant Location"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Agrahari Marriage Hall Location"
                 data-testid="map-embed"
               />
               <div className="absolute inset-0 pointer-events-none border border-gold/10 rounded-3xl" />
