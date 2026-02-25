@@ -793,7 +793,7 @@ function LocationSection() {
                     </div>
                     <div>
                       <span className="font-serif text-lg text-gold tracking-[0.08em] block">
-                        Navigate to Agrahari
+                        Navigate to Agrahari Marriage Hall
                       </span>
                       <span className="text-white/40 text-xs tracking-wider">
                         Open in Google Maps
