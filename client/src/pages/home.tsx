@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
-import { Star, MapPin, Phone, Clock, ChevronLeft, ChevronRight, Menu, X, Utensils, Crown, ShoppingBag, ArrowRight, Sparkles, Compass, Navigation, ExternalLink, Quote } from "lucide-react";
+import { Star, MapPin, Phone, Clock, ChevronLeft, ChevronRight, Menu, X, Utensils, Crown, ShoppingBag, ArrowRight, Sparkles, Compass, Navigation, ExternalLink, Quote, Instagram } from "lucide-react";
 
 const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/fvJKZ1YgDREkeJm38";
 const PHONE_NUMBER = "08009188327";
@@ -831,6 +831,23 @@ function Footer() {
           <p className="text-white/20 text-xs tracking-wider">
             &copy; {new Date().getFullYear()} Agrahari Marriage Hall, Restaurant & Shopping Centre
           </p>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <div className="h-px w-20 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+          <a
+            href="https://www.instagram.com/amangupta.yt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-white/35 hover:text-gold transition-all duration-500 group"
+            data-testid="link-creator-credit"
+          >
+            <span>Designed & Developed by</span>
+            <span className="text-gold/60 group-hover:text-gold transition-colors duration-500">Aman Gupta</span>
+            <span className="text-white/20">|</span>
+            <Instagram className="w-3 h-3 text-gold/50 group-hover:text-gold transition-colors duration-500" />
+            <span className="text-gold/50 group-hover:text-gold transition-colors duration-500">@amangupta.yt</span>
+          </a>
         </div>
       </div>
     </footer>
