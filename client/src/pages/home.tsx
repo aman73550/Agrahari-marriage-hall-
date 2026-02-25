@@ -68,7 +68,7 @@ function Navbar() {
               href={GOOGLE_MAPS_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm tracking-[0.15em] uppercase px-7 py-2.5 rounded-full bg-gradient-to-r from-gold to-gold-dark text-charcoal font-semibold transition-all duration-500 hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:scale-105 border border-white/10 backdrop-blur-sm"
+              className="text-sm tracking-[0.15em] uppercase px-7 py-2.5 rounded-full bg-gradient-to-r from-gold to-gold-dark text-charcoal font-semibold transition-all duration-500 hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:scale-105 border border-white/10 backdrop-blur-sm whitespace-nowrap"
               data-testid="button-get-directions-nav"
             >
               Get Directions
