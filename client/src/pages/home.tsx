@@ -58,7 +58,7 @@ function Navbar() {
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
-                className="text-sm tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-gold"
+                className="text-sm tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-gold whitespace-nowrap"
                 data-testid={`link-nav-${link.id}`}
               >
                 {link.label}
