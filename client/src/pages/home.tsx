@@ -44,8 +44,12 @@ function Navbar() {
             className="flex items-center gap-3"
             data-testid="link-logo"
           >
-            <Sparkles className="w-6 h-6 text-gold" />
-            <span className="font-serif text-xl tracking-[0.15em] text-gold">AGRAHARI MARRIAGE HALL</span>
+            <Sparkles className="w-6 h-6 text-gold flex-shrink-0" />
+            <span className="font-serif tracking-[0.15em] text-gold md:hidden text-lg">AGRAHARI MARRIAGE HALL</span>
+            <span className="font-serif tracking-[0.12em] text-gold hidden md:block text-base leading-tight">
+              AGRAHARI MARRIAGE HALL,<br />
+              <span className="text-sm tracking-[0.1em] text-gold/80">RESTAURANT & SHOPPING CENTRE</span>
+            </span>
           </button>
 
           <div className="hidden md:flex items-center gap-10">
@@ -278,7 +282,7 @@ function AboutSection() {
             </h2>
             <div className="space-y-6">
               <p className="text-white/60 leading-[1.8] text-base tracking-wide font-light">
-                Nestled in the heart of Dumariyaganj, Agrahari Restaurant & Shopping Centre
+                Nestled in the heart of Dumariyaganj, Agrahari Marriage Hall, Restaurant & Shopping Centre
                 stands as a testament to refined taste and timeless elegance. Our establishment
                 brings together the finest culinary traditions, a majestic celebration venue,
                 and an exquisite retail experience under one roof.
@@ -812,9 +816,10 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-3">
-            <Sparkles className="w-5 h-5 text-gold/60" />
-            <span className="font-serif text-lg tracking-[0.15em] text-gold/60">
-              AGRAHARI
+            <Sparkles className="w-5 h-5 text-gold/60 flex-shrink-0" />
+            <span className="font-serif text-sm tracking-[0.12em] text-gold/60 leading-tight">
+              AGRAHARI MARRIAGE HALL,<br />
+              <span className="text-xs tracking-[0.08em] text-gold/40">RESTAURANT & SHOPPING CENTRE</span>
             </span>
           </div>
 
@@ -823,7 +828,7 @@ function Footer() {
           </p>
 
           <p className="text-white/20 text-xs tracking-wider">
-            &copy; {new Date().getFullYear()} Agrahari Restaurant & Shopping Centre
+            &copy; {new Date().getFullYear()} Agrahari Marriage Hall, Restaurant & Shopping Centre
           </p>
         </div>
       </div>
