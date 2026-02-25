@@ -31,7 +31,7 @@ function Navbar() {
       data-testid="navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-black/40 backdrop-blur-2xl border-b border-gold/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+          ? "bg-black/40 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)]"
           : "bg-transparent"
       }`}
     >
@@ -796,7 +796,8 @@ function LocationSection() {
 
 function Footer() {
   return (
-    <footer className="relative py-16 border-t border-gold/10" data-testid="section-footer">
+    <footer className="relative py-16" data-testid="section-footer">
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-transparent to-black pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-3">

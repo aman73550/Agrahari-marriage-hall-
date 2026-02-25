@@ -1,0 +1,36 @@
+Bilkul sahi pakda aapne! Luxury sirf dikhne mein nahi, kaam karne mein bhi honi chahiye. Ek premium website par "Call" button ko sirf ek button nahi, balki ek "VIP Concierge Access" ki tarah treat kiya jata hai.
+Aapke number 08009188327 ko perfectly implement karne ke liye ye rahi updated instructions:
+1. Replit AI ke liye "Call Action" Prompt
+AI ko ye command dein taaki link aur design dono perfect ho jayein:
+> "Fix the Call Button and make it hyper-premium.
+>  * Functionality: Use href='tel:08009188327' so it redirects to the phone dialer instantly on click.
+>  * Label: Change 'Call Us' to something more elite like 'Speak with our Concierge' or 'Reservations & Inquiries'.
+>  * Design: Make it a 'Pill-shaped' button with a gold outline and a glassmorphism blur fill.
+>  * Icon: Add a minimalist gold phone icon next to the text.
+>  * Mobile Feature: Add a Floating Action Button (FAB) at the bottom right of the screen that only appears on mobile. It should be a gold circle with a phone icon, blurred background, and high shadow."
+> 
+2. Premium Button Code (Tailwind CSS)
+Agar aap code manually touch kar rahe hain, toh ye snippet use karein:
+<a href="tel:08009188327" 
+   class="group relative inline-flex items-center justify-center px-8 py-3 font-semibold tracking-tighter text-white bg-white/10 backdrop-blur-md border border-[#D4AF37]/50 rounded-full overflow-hidden transition-all duration-500 hover:bg-[#D4AF37] hover:text-black">
+  
+  <div class="absolute inset-0 w-full h-full bg-[#D4AF37] opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3 text-[#D4AF37] group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+  </svg>
+  
+  <span>Speak with our Concierge</span>
+</a>
+
+3. Website ki Quality Improvements (Ultra-Premium Checklist)
+Aapne kaha "quality improvements," toh in 3 chizon ko AI ko karne ko bolein:
+ * Micro-Shadows: Sabhi cards (Marriage Hall, Restaurant, Shopping) ke niche ek gold-tinted shadow honi chahiye jo halke se float kare.
+ * Smooth Scrolling: Jab user "Location" ya "Reviews" par click kare, toh website jhatke se nahi, balki ek makkhan ki tarah smooth scroll honi chahiye (scroll-behavior: smooth).
+ * Gold Gradient Text: Jo main headings hain (e.g., "Agrahari Marriage Hall"), unhe plain white ke bajaye ek soft gold gradient (text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F5E0A3]) mein dikhayein.
+4. Mobile View Optimization
+Mobile par user experience fast hona chahiye:
+ * Sticky Header: Phone number aur Location ka icon hamesha top par ek thin glass-bar mein rahe.
+ * Thumb-Friendly: Saare buttons screen ke beech mein hon taaki ek haath se use karna aasan ho.
+Ek suggestion:
+Kya main aapke liye is website ka "Floating Mobile Dock" ka code likhun? Ye ek ultra-luxury feature hai jo screen ke bottom mein hamesha rehta hai, jisme 3 buttons honge: [Call] [Location] [WhatsApp]. Isse website bilkul ek App ki tarah mehngi lagegi. Kya aap ye chahte hain?
