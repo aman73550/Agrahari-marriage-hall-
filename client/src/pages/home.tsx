@@ -45,10 +45,11 @@ function Navbar() {
             data-testid="link-logo"
           >
             <Sparkles className="w-6 h-6 text-gold flex-shrink-0" />
-            <span className="font-serif tracking-[0.15em] text-gold md:hidden text-lg">AGRAHARI MARRIAGE HALL</span>
-            <span className="font-serif tracking-[0.12em] text-gold hidden md:block text-base leading-tight">
-              AGRAHARI MARRIAGE HALL,<br />
-              <span className="text-sm tracking-[0.1em] text-gold/80">RESTAURANT & SHOPPING CENTRE</span>
+            <span className="font-serif tracking-[0.15em] text-gold text-base leading-tight">
+              <span className="md:hidden">AGRAHARI MARRIAGE HALL</span>
+              <span className="hidden md:inline">AGRAHARI MARRIAGE HALL,{" "}
+                <span className="text-gold/75">RESTAURANT & SHOPPING CENTRE</span>
+              </span>
             </span>
           </button>
 
